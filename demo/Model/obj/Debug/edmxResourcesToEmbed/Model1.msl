@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KaoshiDBModelStoreContainer" CdmEntityContainer="KaoshiDBEntities">
+    <EntitySetMapping Name="y_SysPerssions">
+      <EntityTypeMapping TypeName="KaoshiDBModel.y_SysPerssions">
+        <MappingFragment StoreEntitySet="y_SysPerssions">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="y_UserPession">
+      <EntityTypeMapping TypeName="KaoshiDBModel.y_UserPession">
+        <MappingFragment StoreEntitySet="y_UserPession">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PerssionCode" ColumnName="PerssionCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="y_Users">
+      <EntityTypeMapping TypeName="KaoshiDBModel.y_Users">
+        <MappingFragment StoreEntitySet="y_Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

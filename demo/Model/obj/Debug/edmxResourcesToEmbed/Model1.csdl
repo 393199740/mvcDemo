@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KaoshiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="y_SysPerssions">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="y_UserPession">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PerssionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="y_Users" Relationship="Self.FK_y_UserPession_y_Users" FromRole="y_UserPession" ToRole="y_Users" />
+  </EntityType>
+  <EntityType Name="y_Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="y_UserPession" Relationship="Self.FK_y_UserPession_y_Users" FromRole="y_Users" ToRole="y_UserPession" />
+  </EntityType>
+  <Association Name="FK_y_UserPession_y_Users">
+    <End Role="y_Users" Type="Self.y_Users" Multiplicity="0..1" />
+    <End Role="y_UserPession" Type="Self.y_UserPession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="y_Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="y_UserPession">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KaoshiDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="y_SysPerssions" EntityType="Self.y_SysPerssions" />
+    <EntitySet Name="y_UserPession" EntityType="Self.y_UserPession" />
+    <EntitySet Name="y_Users" EntityType="Self.y_Users" />
+    <AssociationSet Name="FK_y_UserPession_y_Users" Association="Self.FK_y_UserPession_y_Users">
+      <End Role="y_Users" EntitySet="y_Users" />
+      <End Role="y_UserPession" EntitySet="y_UserPession" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

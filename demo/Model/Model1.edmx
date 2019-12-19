@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KaoshiDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="y_SysPerssions">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="y_UserPession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PerssionCode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="y_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Pwd" Type="varchar" MaxLength="50" />
+          <Property Name="RealName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_y_UserPession_y_Users">
+          <End Role="y_Users" Type="Self.y_Users" Multiplicity="0..1" />
+          <End Role="y_UserPession" Type="Self.y_UserPession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="y_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="y_UserPession">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KaoshiDBModelStoreContainer">
+          <EntitySet Name="y_SysPerssions" EntityType="Self.y_SysPerssions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="y_UserPession" EntityType="Self.y_UserPession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="y_Users" EntityType="Self.y_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_y_UserPession_y_Users" Association="Self.FK_y_UserPession_y_Users">
+            <End Role="y_Users" EntitySet="y_Users" />
+            <End Role="y_UserPession" EntitySet="y_UserPession" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KaoshiDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="y_SysPerssions">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="y_UserPession">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="PerssionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="y_Users" Relationship="Self.FK_y_UserPession_y_Users" FromRole="y_UserPession" ToRole="y_Users" />
+        </EntityType>
+        <EntityType Name="y_Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="y_UserPession" Relationship="Self.FK_y_UserPession_y_Users" FromRole="y_Users" ToRole="y_UserPession" />
+        </EntityType>
+        <Association Name="FK_y_UserPession_y_Users">
+          <End Role="y_Users" Type="Self.y_Users" Multiplicity="0..1" />
+          <End Role="y_UserPession" Type="Self.y_UserPession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="y_Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="y_UserPession">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KaoshiDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="y_SysPerssions" EntityType="Self.y_SysPerssions" />
+          <EntitySet Name="y_UserPession" EntityType="Self.y_UserPession" />
+          <EntitySet Name="y_Users" EntityType="Self.y_Users" />
+          <AssociationSet Name="FK_y_UserPession_y_Users" Association="Self.FK_y_UserPession_y_Users">
+            <End Role="y_Users" EntitySet="y_Users" />
+            <End Role="y_UserPession" EntitySet="y_UserPession" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KaoshiDBModelStoreContainer" CdmEntityContainer="KaoshiDBEntities">
+          <EntitySetMapping Name="y_SysPerssions">
+            <EntityTypeMapping TypeName="KaoshiDBModel.y_SysPerssions">
+              <MappingFragment StoreEntitySet="y_SysPerssions">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="y_UserPession">
+            <EntityTypeMapping TypeName="KaoshiDBModel.y_UserPession">
+              <MappingFragment StoreEntitySet="y_UserPession">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PerssionCode" ColumnName="PerssionCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="y_Users">
+            <EntityTypeMapping TypeName="KaoshiDBModel.y_Users">
+              <MappingFragment StoreEntitySet="y_Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+﻿@model List<Model.y_Users>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    @foreach (var item in Model)
+    {
+        <span>@item.RealName</span>
+    }
+
+</div>
+
+<div class="row">
+
+</div>
