@@ -10,12 +10,22 @@ namespace Web.Controllers
     public class BaseController : Controller
     {
         private List<y_UserPession> userPerssions = null;
-        public BaseController()
+
+
+        protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            userPerssions = WebDbContext.KaoshiDBEntities.y_Users
+            base.OnActionExecuted(filterContext);
+            if (HttpContext.Session["user"] == null)
+            {
+                filterContext.Result = Redirect("/Login/Index");
+            }
+            else
+            {
+                userPerssions = WebDbContext.KaoshiDBEntities.y_Users
                 .Where(x => x.Id == 1).FirstOrDefault()
                 .y_UserPession.ToList();
-            ViewBag.Perssions = userPerssions;
+                ViewBag.Perssions = userPerssions;
+            }
         }
     }
 }

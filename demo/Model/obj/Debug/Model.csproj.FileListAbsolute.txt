@@ -8,3 +8,14 @@ C:\Users\xiaowei\source\repos\KaoshiMvcDemo\Model\obj\Debug\Model.csproj.CoreCom
 C:\Users\xiaowei\source\repos\KaoshiMvcDemo\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\xiaowei\source\repos\KaoshiMvcDemo\Model\obj\Debug\Model.dll
 C:\Users\xiaowei\source\repos\KaoshiMvcDemo\Model\obj\Debug\Model.pdb
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\bin\Debug\Model.dll.config
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\bin\Debug\Model.dll
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\bin\Debug\Model.pdb
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\bin\Debug\EntityFramework.dll
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\bin\Debug\EntityFramework.xml
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\obj\Debug\Model.dll
+C:\Users\xiaowei\source\repos\mvcDemo\demo\Model\obj\Debug\Model.pdb
